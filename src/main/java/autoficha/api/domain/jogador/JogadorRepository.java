@@ -5,6 +5,6 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 public interface JogadorRepository extends JpaRepository<Jogador, Integer> {
 
-  UserDetails findByLogin(String username);
+  UserDetails findByNome(String username);
 
 }
