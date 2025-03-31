@@ -1,4 +1,4 @@
-package autoficha.api.infra;
+package autoficha.api.infra.exception;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.FieldError;
@@ -22,10 +22,6 @@ public class TrataErros {
     var erros = ex.getFieldErrors();
     return ResponseEntity.badRequest().body(erros.stream().map(DadosErroValidacao::new).toList());
   }
-
-
-
-
 
   private record DadosErroValidacao(String campo, String mensagem) {
     public DadosErroValidacao(FieldError erro) {
