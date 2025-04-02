@@ -8,8 +8,7 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import autoficha.api.domain.jogador.JogadorRecords;
-import autoficha.api.domain.jogador.JogadorTipos;
-import autoficha.api.domain.jogador.jogadorUpdateData;
+import autoficha.api.domain.jogador.JogadorUpdateData;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
@@ -46,7 +45,7 @@ public class Jogador implements UserDetails {
     this.tipo_jogador = dados.tipo_jogador();
   }
 
-  public void updateValues(jogadorUpdateData dados) {
+  public void updateValues(JogadorUpdateData dados) {
     try {
       if (dados.nome() != null) {
         this.nome = dados.nome();

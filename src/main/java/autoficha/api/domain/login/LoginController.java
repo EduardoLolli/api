@@ -1,4 +1,4 @@
-package autoficha.api.controller;
+package autoficha.api.domain.login;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import autoficha.api.domain.jogador.AuthenticationData;
 import autoficha.api.infra.security.TokenJWTData;
 import autoficha.api.infra.security.TokenService;
 import autoficha.api.model.Jogador;
@@ -17,7 +16,7 @@ import jakarta.validation.Valid;
 
 @RestController
 @RequestMapping("/login")
-public class AuthenticationController {
+public class LoginController {
   @Autowired
   private AuthenticationManager manager;
 
@@ -25,7 +24,7 @@ public class AuthenticationController {
   private TokenService tokenService;
 
   @PostMapping
-  public ResponseEntity fazLogin(@RequestBody @Valid AuthenticationData dados) {
+  public ResponseEntity fazLogin(@RequestBody @Valid LoginRecord dados) {
     var authToken = new UsernamePasswordAuthenticationToken(dados.email(), dados.senha());
     var autentication = manager.authenticate(authToken);
     var tokenJTW = tokenService.TokenGen((Jogador) autentication.getPrincipal());

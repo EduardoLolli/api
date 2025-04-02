@@ -1,4 +1,4 @@
-package autoficha.api.domain.item;
+package autoficha.api.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 

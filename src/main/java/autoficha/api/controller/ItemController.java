@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import autoficha.api.domain.item.ItemDataList;
-import autoficha.api.domain.item.ItemRepository;
+import autoficha.api.repository.ItemRepository;
 
 @RestController
 @RequestMapping("itens")

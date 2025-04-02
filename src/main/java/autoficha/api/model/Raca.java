@@ -1,6 +1,6 @@
 package autoficha.api.model;
 
-import autoficha.api.domain.item.ItemRecords;
+import autoficha.api.domain.raca.RacaRecords;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -11,32 +11,32 @@ import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-@Table(name = "itens")
-@Entity(name = "Item")
+@Table(name = "racas")
+@Entity(name = "Raca")
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode(of = "id")
-public class Item {
+public class Raca {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
-
   private Integer id;
-  private Integer tipo_item_id;
   private String nome;
-  private Double valor_em_ouro;
-  private Double peso;
+  private String tamanho;
+  private Integer velocidade_em_metros;
+  private String idiomas_base;
+  private String idioma_adicional;
+  private Boolean visao_escuro;
   private String descricao;
-  private String propriedades;
 
-  public Item(ItemRecords dados) {
+  public Raca(RacaRecords dados) {
     this.id = dados.id();
-    this.tipo_item_id = dados.tipo_item_id();
     this.nome = dados.nome();
-    this.valor_em_ouro = dados.valor_em_ouro();
-    this.peso = dados.peso();
+    this.tamanho = dados.tamanho();
+    this.velocidade_em_metros = dados.velocidade_em_metros();
+    this.idiomas_base = dados.idiomas_base();
+    this.idioma_adicional = dados.idioma_adicional();
+    this.visao_escuro = dados.visao_escuro();
     this.descricao = dados.descricao();
-    this.propriedades = dados.propriedades();
   }
-
 }

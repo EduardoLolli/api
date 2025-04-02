@@ -24,7 +24,6 @@ public class TokenService {
   public String TokenGen(Jogador jogador) {
     try {
       var algorithm = Algorithm.HMAC256(secret);
-      System.out.println(secret);
       return JWT.create()
           .withIssuer("Autoficha")
           .withSubject(jogador.getEmail())
@@ -37,7 +36,6 @@ public class TokenService {
 
   public String getSubjectToken(String tokenJWR) {
     try {
-
       var algorithm = Algorithm.HMAC256(secret);
       return JWT.require(algorithm)
           .withIssuer("Autoficha")

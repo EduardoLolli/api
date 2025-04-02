@@ -13,12 +13,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.util.UriComponentsBuilder;
 
-import autoficha.api.domain.jogador.JogadorDadosDetalhados;
 import autoficha.api.domain.jogador.JogadorDataList;
 import autoficha.api.domain.jogador.JogadorRecords;
-import autoficha.api.domain.jogador.JogadorRepository;
-import autoficha.api.domain.jogador.jogadorUpdateData;
+import autoficha.api.domain.jogador.JogadorUpdateData;
+import autoficha.api.dto.JogadorDadosDetalhados;
 import autoficha.api.model.Jogador;
+import autoficha.api.repository.JogadorRepository;
 import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
 
@@ -53,7 +53,7 @@ public class JogadorController {
 
   @PutMapping
   @Transactional
-  public ResponseEntity<JogadorDadosDetalhados> updatePlayer(@RequestBody @Valid jogadorUpdateData dados) {
+  public ResponseEntity<JogadorDadosDetalhados> updatePlayer(@RequestBody @Valid JogadorUpdateData dados) {
     var jogador = repository.getReferenceById(dados.id());
     jogador.updateValues(dados);
     return ResponseEntity.ok(new JogadorDadosDetalhados(jogador));

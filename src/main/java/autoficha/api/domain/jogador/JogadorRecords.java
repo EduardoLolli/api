@@ -1,5 +1,6 @@
 package autoficha.api.domain.jogador;
 
+import autoficha.api.model.JogadorTipos;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;

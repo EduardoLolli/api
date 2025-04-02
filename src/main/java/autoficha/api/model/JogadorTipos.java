@@ -1,4 +1,4 @@
-package autoficha.api.domain.jogador;
+package autoficha.api.model;
 
 public enum JogadorTipos {
   Player,

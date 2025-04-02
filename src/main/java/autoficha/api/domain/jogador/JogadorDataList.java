@@ -1,6 +1,7 @@
 package autoficha.api.domain.jogador;
 
 import autoficha.api.model.Jogador;
+import autoficha.api.model.JogadorTipos;
 
 public record JogadorDataList(
     Integer id,
