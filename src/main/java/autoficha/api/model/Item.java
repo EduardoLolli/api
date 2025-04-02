@@ -1,5 +1,6 @@
-package autoficha.api.domain.item;
+package autoficha.api.model;
 
+import autoficha.api.domain.item.itemRecords;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;

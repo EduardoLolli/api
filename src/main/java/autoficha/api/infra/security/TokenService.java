@@ -13,7 +13,7 @@ import com.auth0.jwt.algorithms.Algorithm;
 import com.auth0.jwt.exceptions.JWTCreationException;
 import com.auth0.jwt.exceptions.JWTVerificationException;
 
-import autoficha.api.domain.jogador.Jogador;
+import autoficha.api.model.Jogador;
 
 @Service
 public class TokenService {

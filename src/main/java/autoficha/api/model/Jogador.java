@@ -1,4 +1,4 @@
-package autoficha.api.domain.jogador;
+package autoficha.api.model;
 
 import java.util.Collection;
 import java.util.List;
@@ -7,6 +7,9 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+import autoficha.api.domain.jogador.JogadorRecords;
+import autoficha.api.domain.jogador.JogadorTipos;
+import autoficha.api.domain.jogador.jogadorUpdateData;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;

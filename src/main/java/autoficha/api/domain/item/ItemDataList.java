@@ -1,5 +1,7 @@
 package autoficha.api.domain.item;
 
+import autoficha.api.model.Item;
+
 public record ItemDataList(
     Integer id,
     Integer tipo_item_id,

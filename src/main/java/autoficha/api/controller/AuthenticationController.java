@@ -10,9 +10,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import autoficha.api.domain.jogador.AuthenticationData;
-import autoficha.api.domain.jogador.Jogador;
 import autoficha.api.infra.security.TokenJWTData;
 import autoficha.api.infra.security.TokenService;
+import autoficha.api.model.Jogador;
 import jakarta.validation.Valid;
 
 @RestController

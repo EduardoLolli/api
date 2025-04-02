@@ -1,5 +1,7 @@
 package autoficha.api.domain.jogador;
 
+import autoficha.api.model.Jogador;
+
 public record JogadorDadosDetalhados(Integer id, String nome, String email, JogadorTipos tipo_jogador) {
 
   public JogadorDadosDetalhados(Jogador jogador) {

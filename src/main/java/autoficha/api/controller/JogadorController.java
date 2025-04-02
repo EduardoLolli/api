@@ -13,12 +13,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.util.UriComponentsBuilder;
 
-import autoficha.api.domain.jogador.Jogador;
 import autoficha.api.domain.jogador.JogadorDadosDetalhados;
 import autoficha.api.domain.jogador.JogadorDataList;
 import autoficha.api.domain.jogador.JogadorRecords;
 import autoficha.api.domain.jogador.JogadorRepository;
 import autoficha.api.domain.jogador.jogadorUpdateData;
+import autoficha.api.model.Jogador;
 import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
 

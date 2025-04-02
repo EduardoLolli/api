@@ -1,5 +1,7 @@
 package autoficha.api.domain.jogador;
 
+import autoficha.api.model.Jogador;
+
 public record JogadorDataList(
     Integer id,
     String nome,
