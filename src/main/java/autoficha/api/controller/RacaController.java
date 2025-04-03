@@ -14,8 +14,8 @@ import org.springframework.web.util.UriComponentsBuilder;
 import autoficha.api.domain.jogador.JogadorRecords;
 import autoficha.api.domain.raca.RacaDataList;
 import autoficha.api.domain.raca.RacaRecords;
-import autoficha.api.dto.JogadorDadosDetalhados;
-import autoficha.api.dto.RacaDadosDetalhados;
+import autoficha.api.dto.JogadorDto;
+import autoficha.api.dto.RacaDto;
 import autoficha.api.model.Jogador;
 import autoficha.api.model.Raca;
 import autoficha.api.repository.RacaRepository;
@@ -36,13 +36,13 @@ public class RacaController {
 
   @PostMapping
   @Transactional
-  public ResponseEntity<RacaDadosDetalhados> newRaca(@RequestBody @Valid RacaRecords dados,
+  public ResponseEntity<RacaDto> newRaca(@RequestBody @Valid RacaRecords dados,
       UriComponentsBuilder uibuilder) {
     var newRace = new Raca(dados);
     repository.save(newRace);
 
     var uri = uibuilder.path("racas/{id}").buildAndExpand(newRace.getId()).toUri();
-    return ResponseEntity.created(uri).body(new RacaDadosDetalhados(newRace));
+    return ResponseEntity.created(uri).body(new RacaDto(newRace));
   }
 
 }

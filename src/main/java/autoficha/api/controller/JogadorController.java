@@ -16,7 +16,7 @@ import org.springframework.web.util.UriComponentsBuilder;
 import autoficha.api.domain.jogador.JogadorDataList;
 import autoficha.api.domain.jogador.JogadorRecords;
 import autoficha.api.domain.jogador.JogadorUpdateData;
-import autoficha.api.dto.JogadorDadosDetalhados;
+import autoficha.api.dto.JogadorDto;
 import autoficha.api.model.Jogador;
 import autoficha.api.repository.JogadorRepository;
 import jakarta.transaction.Transactional;
@@ -42,21 +42,21 @@ public class JogadorController {
 
   @PostMapping
   @Transactional
-  public ResponseEntity<JogadorDadosDetalhados> newPlayer(@RequestBody @Valid JogadorRecords dados,
+  public ResponseEntity<JogadorDto> newPlayer(@RequestBody @Valid JogadorRecords dados,
       UriComponentsBuilder uibuilder) {
     var novoJogador = new Jogador(dados);
     repository.save(novoJogador);
 
     var uri = uibuilder.path("jogadores/{id}").buildAndExpand(novoJogador.getId()).toUri();
-    return ResponseEntity.created(uri).body(new JogadorDadosDetalhados(novoJogador));
+    return ResponseEntity.created(uri).body(new JogadorDto(novoJogador));
   }
 
   @PutMapping
   @Transactional
-  public ResponseEntity<JogadorDadosDetalhados> updatePlayer(@RequestBody @Valid JogadorUpdateData dados) {
+  public ResponseEntity<JogadorDto> updatePlayer(@RequestBody @Valid JogadorUpdateData dados) {
     var jogador = repository.getReferenceById(dados.id());
     jogador.updateValues(dados);
-    return ResponseEntity.ok(new JogadorDadosDetalhados(jogador));
+    return ResponseEntity.ok(new JogadorDto(jogador));
   }
 
 }

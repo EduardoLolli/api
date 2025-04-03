@@ -2,7 +2,8 @@ package autoficha.api.dto;
 
 import autoficha.api.model.Classe;
 
-public record ClasseDadosDetalhados(Integer id,
+
+public record ClasseDto(Integer id,
     String nome,
     Integer dados_vida,
     Integer bonus_for,
@@ -20,7 +21,7 @@ public record ClasseDadosDetalhados(Integer id,
     String descricao,
     String talentos_classe) {
 
-  public ClasseDadosDetalhados(Classe classe) {
+  public ClasseDto(Classe classe) {
     this(classe.getId(),
         classe.getNome(),
         classe.getDados_vida(),

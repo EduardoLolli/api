@@ -3,9 +3,9 @@ package autoficha.api.dto;
 import autoficha.api.model.Jogador;
 import autoficha.api.model.JogadorTipos;
 
-public record JogadorDadosDetalhados(Integer id, String nome, String email, JogadorTipos tipo_jogador) {
+public record JogadorDto(Integer id, String nome, String email, JogadorTipos tipo_jogador) {
 
-  public JogadorDadosDetalhados(Jogador jogador) {
+  public JogadorDto(Jogador jogador) {
     this(
         jogador.getId(),
         jogador.getNome(),
@@ -13,3 +13,5 @@ public record JogadorDadosDetalhados(Integer id, String nome, String email, Joga
         jogador.getTipo_jogador());
   }
 };
+
+

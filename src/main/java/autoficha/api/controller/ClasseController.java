@@ -13,9 +13,9 @@ import org.springframework.web.util.UriComponentsBuilder;
 
 import autoficha.api.domain.classe.ClasseDataList;
 import autoficha.api.domain.classe.ClasseRecords;
-import autoficha.api.domain.classe.ClasseRepository;
-import autoficha.api.dto.ClasseDadosDetalhados;
+import autoficha.api.dto.ClasseDto;
 import autoficha.api.model.Classe;
+import autoficha.api.repository.ClasseRepository;
 import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
 
@@ -33,13 +33,13 @@ public class ClasseController {
 
   @PostMapping
   @Transactional
-  public ResponseEntity<ClasseDadosDetalhados> newClasse(@RequestBody @Valid ClasseRecords dados,
+  public ResponseEntity<ClasseDto> newClasse(@RequestBody @Valid ClasseRecords dados,
       UriComponentsBuilder uibuilder) {
     var newclasse = new Classe(dados);
     repository.save(newclasse);
 
     var uri = uibuilder.path("classe/{id}").buildAndExpand(newclasse.getId()).toUri();
-    return ResponseEntity.created(uri).body(new ClasseDadosDetalhados(newclasse));
+    return ResponseEntity.created(uri).body(new ClasseDto(newclasse));
   }
 
 }

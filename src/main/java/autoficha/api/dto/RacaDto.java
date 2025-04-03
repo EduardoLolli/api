@@ -2,7 +2,7 @@ package autoficha.api.dto;
 
 import autoficha.api.model.Raca;
 
-public record RacaDadosDetalhados(
+public record RacaDto(
     Integer id,
     String nome,
     String tamanho,
@@ -12,7 +12,7 @@ public record RacaDadosDetalhados(
     Boolean visao_escuro,
     String descricao) {
 
-  public RacaDadosDetalhados(Raca raca) {
+  public RacaDto(Raca raca) {
     this(
         raca.getId(),
         raca.getNome(),
