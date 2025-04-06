@@ -2,6 +2,7 @@ package autoficha.api.domain.personagem;
 
 import autoficha.api.model.Personagem;
 
+
 public record PersonagemDataList(Integer id,
     Integer jogador_id,
     Integer heranca_id,

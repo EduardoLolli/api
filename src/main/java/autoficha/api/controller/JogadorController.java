@@ -1,5 +1,6 @@
 package autoficha.api.controller;
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.util.UriComponentsBuilder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 import autoficha.api.domain.jogador.JogadorDataList;
 import autoficha.api.domain.jogador.JogadorRecords;
@@ -27,6 +29,9 @@ import jakarta.validation.Valid;
 public class JogadorController {
   @Autowired
   private JogadorRepository repository;
+
+  @Autowired
+  private PasswordEncoder passwordEncoder;
 
   @GetMapping()
   public ResponseEntity<Page<JogadorDataList>> allPlayers(Pageable pagination) {
@@ -45,6 +50,7 @@ public class JogadorController {
   public ResponseEntity<JogadorDto> newPlayer(@RequestBody @Valid JogadorRecords dados,
       UriComponentsBuilder uibuilder) {
     var novoJogador = new Jogador(dados);
+    novoJogador.setSenha(passwordEncoder.encode("{bcrypt}" + dados.senha()));
     repository.save(novoJogador);
 
     var uri = uibuilder.path("jogadores/{id}").buildAndExpand(novoJogador.getId()).toUri();

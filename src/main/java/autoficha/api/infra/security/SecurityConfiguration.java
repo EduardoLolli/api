@@ -1,7 +1,5 @@
 package autoficha.api.infra.security;
 
-import java.lang.reflect.Method;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -18,7 +16,7 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 
 @Configuration
 @EnableWebSecurity
-public class SecurityConfigurations {
+public class SecurityConfiguration {
 
   @Autowired
   private SecurityFilter securityFilter;
@@ -26,6 +24,13 @@ public class SecurityConfigurations {
   @Bean
   public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
     return http.csrf(csrf -> csrf.disable())
+        .cors(cors -> cors.configurationSource(request -> {
+          var corsConfiguration = new org.springframework.web.cors.CorsConfiguration();
+          corsConfiguration.addAllowedOriginPattern("http://localhost:517*");
+          corsConfiguration.addAllowedMethod("*");
+          corsConfiguration.addAllowedHeader("*");
+          return corsConfiguration;
+        }))
         .sessionManagement(sm -> sm.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
         .authorizeHttpRequests(
             authorize -> authorize.requestMatchers(HttpMethod.POST).permitAll().anyRequest().authenticated())
@@ -34,13 +39,14 @@ public class SecurityConfigurations {
   }
 
   @Bean
-  public AuthenticationManager authenticattioManager(AuthenticationConfiguration confioguration) throws Exception {
-    return confioguration.getAuthenticationManager();
+  public AuthenticationManager authenticattioManager(AuthenticationConfiguration configuration) throws Exception {
+    return configuration.getAuthenticationManager();
   }
 
   @Bean
   public PasswordEncoder passwordEncoder() {
     return new BCryptPasswordEncoder();
   }
+
 
 }

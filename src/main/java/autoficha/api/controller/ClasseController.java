@@ -5,6 +5,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -13,6 +14,7 @@ import org.springframework.web.util.UriComponentsBuilder;
 
 import autoficha.api.domain.classe.ClasseDataList;
 import autoficha.api.domain.classe.ClasseRecords;
+import autoficha.api.domain.jogador.JogadorDataList;
 import autoficha.api.dto.ClasseDto;
 import autoficha.api.model.Classe;
 import autoficha.api.repository.ClasseRepository;
@@ -29,6 +31,12 @@ public class ClasseController {
   public ResponseEntity<Page<ClasseDataList>> allClasses(Pageable pagination) {
     Page<ClasseDataList> classeLista = repository.findAll(pagination).map(ClasseDataList::new);
     return ResponseEntity.ok(classeLista);
+  }
+
+   @GetMapping("/{id}")
+  public ResponseEntity<ClasseDataList> findClasseByID(@PathVariable Integer id) {
+    ClasseDataList classeEncontrada = new ClasseDataList(repository.getReferenceById(id));
+    return ResponseEntity.ok(classeEncontrada);
   }
 
   @PostMapping
