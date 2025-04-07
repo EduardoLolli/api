@@ -45,17 +45,18 @@ public class JogadorController {
     return ResponseEntity.ok(jogadorEncontrado);
   }
 
-  @PostMapping
+  @PostMapping("/cadastro")
   @Transactional
   public ResponseEntity<JogadorDto> newPlayer(@RequestBody @Valid JogadorRecords dados,
       UriComponentsBuilder uibuilder) {
     var novoJogador = new Jogador(dados);
-    novoJogador.setSenha(passwordEncoder.encode("{bcrypt}" + dados.senha()));
+    novoJogador.setSenha(passwordEncoder.encode(dados.senha()));
     repository.save(novoJogador);
 
     var uri = uibuilder.path("jogadores/{id}").buildAndExpand(novoJogador.getId()).toUri();
     return ResponseEntity.created(uri).body(new JogadorDto(novoJogador));
   }
+
 
   @PutMapping
   @Transactional
