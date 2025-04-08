@@ -1,9 +1,10 @@
 package autoficha.api.dto;
 
+import autoficha.api.model.Jogador;
 import autoficha.api.model.Personagem;
 
 public record PersonagemDto(Integer id,
-    Integer jogador_id,
+    Jogador jogadorId,
     Integer heranca_id,
     String nome,
     Integer nivel,
@@ -27,7 +28,7 @@ public record PersonagemDto(Integer id,
   public PersonagemDto(Personagem personagem) {
     this(
         personagem.getId(),
-        personagem.getJogador_id(),
+        personagem.getJogadorId(),
         personagem.getHeranca_id(),
         personagem.getNome(),
         personagem.getNivel(),

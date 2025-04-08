@@ -25,7 +25,7 @@ public class Personagem {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
 
   private Integer id;
-  private Integer jogador_id;
+  private Jogador jogadorId;
   private Integer heranca_id;
   private String nome;
   private Integer nivel;
@@ -48,7 +48,7 @@ public class Personagem {
   private Boolean ativo;
 
   public Personagem(PersonagemRecords dados) {
-    this.jogador_id = dados.jogador_id();
+    this.jogadorId = dados.jogadorId();
     this.heranca_id = dados.heranca_id();
     this.nome = dados.nome();
     this.nivel = dados.nivel();
