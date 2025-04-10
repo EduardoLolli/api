@@ -1,17 +1,16 @@
 package autoficha.api.dto;
 
-import autoficha.api.model.Jogador;
 import autoficha.api.model.Personagem;
 
-public record PersonagemDto(Integer id,
-    Jogador jogadorId,
-    Integer heranca_id,
+public record PersonagemDto(Long id,
+    Long jogadorId,
+    Long heranca_id,
     String nome,
     Integer nivel,
     Integer experiencia,
-    Integer raca_id,
-    Integer classe_id,
-    Integer biografia_id,
+    Long raca_id,
+    Long classe_id,
+    Long biografia_id,
     String alinhamento_eixo1,
     String alinhamento_eixo2,
     Integer pontos_vida,
@@ -23,12 +22,12 @@ public record PersonagemDto(Integer id,
     Integer inteligencia,
     Integer sabedoria,
     Integer carisma,
-    Integer campanha_id,
+    Long campanha_id,
     Boolean ativo) {
   public PersonagemDto(Personagem personagem) {
     this(
         personagem.getId(),
-        personagem.getJogadorId(),
+        personagem.getJogadorId().getId(),
         personagem.getHeranca_id(),
         personagem.getNome(),
         personagem.getNivel(),

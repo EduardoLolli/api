@@ -5,6 +5,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
@@ -24,15 +25,16 @@ public class Personagem {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
 
-  private Integer id;
+  private Long id;
+  @JoinColumn(name = "jogador_id")
   private Jogador jogadorId;
-  private Integer heranca_id;
+  private Long heranca_id;
   private String nome;
   private Integer nivel;
   private Integer experiencia;
-  private Integer raca_id;
-  private Integer classe_id;
-  private Integer biografia_id;
+  private Long raca_id;
+  private Long classe_id;
+  private Long biografia_id;
   private String alinhamento_eixo1;
   private String alinhamento_eixo2;
   private Integer pontos_vida;
@@ -44,11 +46,10 @@ public class Personagem {
   private Integer inteligencia;
   private Integer sabedoria;
   private Integer carisma;
-  private Integer campanha_id;
+  private Long campanha_id;
   private Boolean ativo;
 
   public Personagem(PersonagemRecords dados) {
-    this.jogadorId = dados.jogadorId();
     this.heranca_id = dados.heranca_id();
     this.nome = dados.nome();
     this.nivel = dados.nivel();

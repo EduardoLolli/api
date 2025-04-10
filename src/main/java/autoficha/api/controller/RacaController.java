@@ -11,12 +11,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.util.UriComponentsBuilder;
 
-import autoficha.api.domain.jogador.JogadorRecords;
 import autoficha.api.domain.raca.RacaDataList;
 import autoficha.api.domain.raca.RacaRecords;
-import autoficha.api.dto.JogadorDto;
 import autoficha.api.dto.RacaDto;
-import autoficha.api.model.Jogador;
 import autoficha.api.model.Raca;
 import autoficha.api.repository.RacaRepository;
 import jakarta.transaction.Transactional;

@@ -14,7 +14,6 @@ import org.springframework.web.util.UriComponentsBuilder;
 
 import autoficha.api.domain.classe.ClasseDataList;
 import autoficha.api.domain.classe.ClasseRecords;
-import autoficha.api.domain.jogador.JogadorDataList;
 import autoficha.api.dto.ClasseDto;
 import autoficha.api.model.Classe;
 import autoficha.api.repository.ClasseRepository;
@@ -33,9 +32,10 @@ public class ClasseController {
     return ResponseEntity.ok(classeLista);
   }
 
-   @GetMapping("/{id}")
-  public ResponseEntity<ClasseDataList> findClasseByID(@PathVariable Integer id) {
-    ClasseDataList classeEncontrada = new ClasseDataList(repository.getReferenceById(id));
+  @GetMapping("/{id}")
+  public ResponseEntity<ClasseDataList> findClasseByID(@PathVariable Long id) {
+    var idConvertido = id.intValue();
+    ClasseDataList classeEncontrada = new ClasseDataList(repository.getReferenceById(idConvertido));
     return ResponseEntity.ok(classeEncontrada);
   }
 

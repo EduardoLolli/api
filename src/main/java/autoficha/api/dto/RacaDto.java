@@ -3,7 +3,7 @@ package autoficha.api.dto;
 import autoficha.api.model.Raca;
 
 public record RacaDto(
-    Integer id,
+    Long id,
     String nome,
     String tamanho,
     Integer velocidade_em_metros,

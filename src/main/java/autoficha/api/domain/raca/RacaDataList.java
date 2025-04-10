@@ -3,7 +3,7 @@ package autoficha.api.domain.raca;
 import autoficha.api.model.Raca;
 
 public record RacaDataList(
-    Integer id,
+    Long id,
     String nome,
     String tamanho,
     Integer velocidade_em_metros,

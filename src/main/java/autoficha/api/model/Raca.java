@@ -20,7 +20,7 @@ import lombok.NoArgsConstructor;
 public class Raca {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
-  private Integer id;
+  private Long id;
   private String nome;
   private String tamanho;
   private Integer velocidade_em_metros;

@@ -4,7 +4,7 @@ package autoficha.api.domain.classe;
 import autoficha.api.model.Classe;
 
 public record ClasseDataList(
-    Integer id,
+    Long id,
     String nome,
     Integer dados_vida,
     Integer bonus_for,

@@ -3,7 +3,7 @@ package autoficha.api.dto;
 import autoficha.api.model.Classe;
 
 
-public record ClasseDto(Integer id,
+public record ClasseDto(Long id,
     String nome,
     Integer dados_vida,
     Integer bonus_for,

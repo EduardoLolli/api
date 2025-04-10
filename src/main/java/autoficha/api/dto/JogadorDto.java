@@ -3,7 +3,7 @@ package autoficha.api.dto;
 import autoficha.api.model.Jogador;
 import autoficha.api.model.JogadorTipos;
 
-public record JogadorDto(Integer id, String nome, String email, JogadorTipos tipo_jogador) {
+public record JogadorDto(Long id, String nome, String email, JogadorTipos tipo_jogador) {
 
   public JogadorDto(Jogador jogador) {
     this(
@@ -13,5 +13,3 @@ public record JogadorDto(Integer id, String nome, String email, JogadorTipos tip
         jogador.getTipo_jogador());
   }
 };
-
-

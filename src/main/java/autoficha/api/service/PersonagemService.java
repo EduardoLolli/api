@@ -18,7 +18,7 @@ public class PersonagemService {
   @Autowired
   private ClasseController controllerClass;
 
-  public Integer calculaVida(Integer classeId, Integer nivelPersonagem) {
+  public Integer calculaVida(Long classeId, Integer nivelPersonagem) {
     var classeReq = controllerClass.findClasseByID(classeId);
     if (nivelPersonagem == null) {
       nivelPersonagem = 1;

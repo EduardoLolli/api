@@ -3,7 +3,7 @@ package autoficha.api.domain.item;
 import autoficha.api.model.Item;
 
 public record ItemDataList(
-    Integer id,
+    Long id,
     Integer tipo_item_id,
     String nome,
     Double valor_em_ouro,

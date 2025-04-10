@@ -1,17 +1,17 @@
 package autoficha.api.domain.personagem;
 
-import autoficha.api.model.Jogador;
 import autoficha.api.model.Personagem;
 
-public record PersonagemDataList(Integer id,
-    Jogador jogadorId,
-    Integer heranca_id,
+public record PersonagemDataList(
+    Long id,
+    Long jogadorId,
+    Long herancaId,
     String nome,
     Integer nivel,
     Integer experiencia,
-    Integer raca_id,
-    Integer classe_id,
-    Integer biografia_id,
+    Long racaId,
+    Long classeId,
+    Long biografiaId,
     String alinhamento_eixo1,
     String alinhamento_eixo2,
     Integer pontos_vida,
@@ -23,13 +23,13 @@ public record PersonagemDataList(Integer id,
     Integer inteligencia,
     Integer sabedoria,
     Integer carisma,
-    Integer campanha_id,
+    Long campanhaId,
     Boolean ativo) {
 
   public PersonagemDataList(Personagem personagem) {
     this(
         personagem.getId(),
-        personagem.getJogadorId(),
+        personagem.getJogadorId().getId(),
         personagem.getHeranca_id(),
         personagem.getNome(),
         personagem.getNivel(),

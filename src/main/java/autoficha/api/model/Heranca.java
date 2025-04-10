@@ -1,6 +1,6 @@
 package autoficha.api.model;
 
-import autoficha.api.domain.biografia.BiografiaRecord;
+import autoficha.api.domain.heranca.HerancaRecord;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -12,24 +12,29 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-@Table(name = "biografias")
-@Entity(name = "Biografia")
+@Table(name = "herancas")
+@Entity(name = "Heranca")
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode(of = "id")
-public class Biografia {
+public class Heranca {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;
+  private Long raca_id;
   private String nome;
   private String descricao;
   private String melhorias_atrib;
+  private String talentos_raca;
 
-  public Biografia(BiografiaRecord biografia) {
-    this.nome = biografia.nome();
-    this.descricao = biografia.descricao();
-    this.melhorias_atrib = biografia.melhorias_atrib();
+  public Heranca(HerancaRecord dados) {
+    this.id = dados.id();
+    this.raca_id = dados.raca_id();
+    this.nome = dados.nome();
+    this.descricao = dados.descricao();
+    this.melhorias_atrib = dados.melhorias_atrib();
+    this.talentos_raca = dados.talentos_raca();
   }
 }

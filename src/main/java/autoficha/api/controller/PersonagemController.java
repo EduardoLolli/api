@@ -2,7 +2,6 @@ package autoficha.api.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -31,10 +30,15 @@ public class PersonagemController {
   @Autowired
   PersonagemService persoService;
 
-  @GetMapping()
+  @GetMapping
   public ResponseEntity<Page<PersonagemDataList>> allCharacters(Pageable pagination) {
-    Page<PersonagemDataList> listaDePersonagens = repository.findAll(pagination).map(PersonagemDataList::new);
-    return ResponseEntity.ok(listaDePersonagens);
+    try {
+      Page<PersonagemDataList> listaDePersonagens = repository.findAll(pagination).map(PersonagemDataList::new);
+      return ResponseEntity.ok(listaDePersonagens);
+    } catch (Exception erro) {
+      System.out.println(erro);
+      return ResponseEntity.status(500).body(null);
+    }
   }
 
   @GetMapping("/{id}")
@@ -43,8 +47,6 @@ public class PersonagemController {
     return ResponseEntity.ok(personagem);
 
   }
-
- 
 
   @PostMapping
   @Transactional
