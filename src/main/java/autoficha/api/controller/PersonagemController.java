@@ -1,5 +1,7 @@
 package autoficha.api.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -12,6 +14,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.util.UriComponentsBuilder;
 
+import autoficha.api.domain.classe.ClasseDataList;
+import autoficha.api.domain.item.ItemDataList;
 import autoficha.api.domain.personagem.PersonagemDataList;
 import autoficha.api.domain.personagem.PersonagemRecords;
 import autoficha.api.dto.PersonagemDto;
@@ -30,15 +34,25 @@ public class PersonagemController {
   @Autowired
   PersonagemService persoService;
 
-  @GetMapping
-  public ResponseEntity<Page<PersonagemDataList>> allCharacters(Pageable pagination) {
+  @GetMapping()
+  public ResponseEntity<Page<PersonagemDataList>> allClasses(Pageable pagination) {
     try {
-      Page<PersonagemDataList> listaDePersonagens = repository.findAll(pagination).map(PersonagemDataList::new);
-      return ResponseEntity.ok(listaDePersonagens);
-    } catch (Exception erro) {
-      System.out.println(erro);
-      return ResponseEntity.status(500).body(null);
+      Page<PersonagemDataList> personagensLista = repository.findAll(pagination).map(PersonagemDataList::new);
+      return ResponseEntity.ok(personagensLista);
+    } catch (Exception e) {
+      return ResponseEntity.status(500).body(Page.empty(pagination).map(p -> {
+      throw new RuntimeException(e.getMessage());
+      }));
     }
+  }
+
+  @GetMapping("/lis")
+  public List<PersonagemDataList> allItens() {
+    return repository
+        .findAll()
+        .stream()
+        .map(PersonagemDataList::new)
+        .toList();
   }
 
   @GetMapping("/{id}")

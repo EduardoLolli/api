@@ -14,6 +14,7 @@ import autoficha.api.domain.login.LoginRecord;
 import autoficha.api.infra.security.TokenJWTData;
 import autoficha.api.infra.security.TokenService;
 import autoficha.api.model.Jogador;
+import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
 
 @RestController
@@ -27,6 +28,7 @@ public class LoginController {
   private TokenService tokenService;
 
   @PostMapping
+  @Transactional
   public ResponseEntity fazLogin(@RequestBody @Valid LoginRecord dados) {
     var authToken = new UsernamePasswordAuthenticationToken(dados.email(), dados.senha());
     var autentication = manager.authenticate(authToken);
