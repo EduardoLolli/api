@@ -41,15 +41,12 @@ public class Jogador implements UserDetails {
   @Enumerated(EnumType.STRING)
   private JogadorTipos tipo_jogador;
 
-  @OneToMany
-  private List<Personagem> personagensLista;
 
   public Jogador(JogadorRecords dados) {
     this.nome = dados.nome();
     this.email = dados.email();
     this.senha = dados.senha();
     this.tipo_jogador = dados.tipo_jogador();
-    this.personagensLista = dados.personagensLista();
   }
 
   public void updateValues(JogadorUpdateData dados) {
